@@ -12,11 +12,18 @@ echo "========== running ${APP} benchmark =========="
 # path check
 DU ${INPUT_HDFS} SIZE 
 
+APP=SimplePageRank
 #JAR="${DIR}/target/scala-2.10/pagerankapp_2.10-1.0.jar"
 JAR="${DIR}/target/PageRankApp-1.0.jar"
-CLASS="src.main.scala.pagerankApp"
+CLASS="src.main.scala.SimplePageRank"
 OPTION="${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_PARTITIONS} ${MAX_ITERATION} ${TOLERANCE} ${RESET_PROB} ${STORAGE_LEVEL}"
 
+if  [ $# -ge 1 ] && [ $1 = "graphx" ]; then
+
+	APP=GraphxPageRank
+	CLASS="src.main.scala.pagerankApp"
+	#INPUT_HDFS="tpcds_bin_partitioned_textfile_2"
+fi
 
 setup
 for((i=0;i<${NUM_TRIALS};i++)); do

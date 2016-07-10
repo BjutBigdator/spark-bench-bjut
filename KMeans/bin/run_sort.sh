@@ -11,16 +11,10 @@ echo "========== running ${APP} bench =========="
 # pre-running
 DU ${INPUT_HDFS} SIZE 
 
+APP=SimpleSort
 JAR="${DIR}/target/KMeansApp-1.0.jar"
-CLASS="src.main.scala.SimpleKMeans"
-OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${MAX_ITERATION} ${STORAGE_LEVEL} ${NUM_OF_PARTITIONS}"
-
-if  [ $# -ge 1 ] && [ $1 = "graphx" ]; then
-
-	APP=GraphxKMeans
-	CLASS="KmeansApp"
-	OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${MAX_ITERATION} ${NUM_RUN}"
-fi
+CLASS="src.main.scala.SimpleSort"
+OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${MAX_ITERATION} ${STORAGE_LEVEL}"
 
 setup
 for((i=0;i<${NUM_TRIALS};i++)); do
@@ -40,4 +34,3 @@ teardown
 
 exit 0
 
-r

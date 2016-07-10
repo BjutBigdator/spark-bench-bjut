@@ -1,4 +1,5 @@
 #!/bin/bash
+
 bin=`dirname "$0"`
 bin=`cd "$bin"; pwd`
 DIR=`cd $bin/../; pwd`
@@ -7,7 +8,7 @@ DIR=`cd $bin/../; pwd`
 
 # =============== path check ===============
 
-DU ${INPUT_HDFS} SIZE 
+#DU ${INPUT_HDFS} SIZE
 
 
 APP=sql_rddRelation
@@ -22,7 +23,32 @@ if  [ $# -ge 1 ] && [ $1 = "hive" ]; then
 	OPTION="${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_PARTITIONS} "
 fi
 
+if  [ $# -ge 1 ] && [ $1 = "tpcds1" ]; then
 
+	APP=Tpcds1
+    JAR="${DIR}/target/SQLApp-1.0.jar"
+	CLASS="src.main.scala.Tpcds1"
+	INPUT_HDFS="tpcds_bin_partitioned_textfile_2"
+	OPTION="${INPUT_HDFS} ${OUTPUT_HDFS} ${NUM_OF_PARTITIONS} ${STORAGE_LEVEL}"
+fi
+
+if  [ $# -ge 1 ] && [ $1 = "tpcds23a" ]; then
+
+	APP=Tpcds23a
+    JAR="${DIR}/target/SQLApp-1.0.jar"
+	CLASS="src.main.scala.Tpcds23a"
+	INPUT_HDFS="tpcds_bin_partitioned_textfile_2"
+	OPTION="${INPUT_HDFS} ${OUTPUT_HDFS} ${NUM_OF_PARTITIONS} ${STORAGE_LEVEL}"
+fi
+
+if  [ $# -ge 1 ] && [ $1 = "tpcds23b" ]; then
+
+	APP=Tpcds23a
+    JAR="${DIR}/target/SQLApp-1.0.jar"
+	CLASS="src.main.scala.Tpcds23a"
+	INPUT_HDFS="tpcds_bin_partitioned_textfile_2"
+	OPTION="${INPUT_HDFS} ${OUTPUT_HDFS} ${NUM_OF_PARTITIONS} ${STORAGE_LEVEL}"
+fi
 
 echo "========== running ${APP} benchmark =========="
 

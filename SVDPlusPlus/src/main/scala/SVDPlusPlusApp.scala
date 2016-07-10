@@ -42,7 +42,7 @@ object SVDPlusPlusApp {
       println("usage: <input> <output> <minEdge> <numIter> <rank> <minVal> <maxVal> <gamma1> <gamma2> <gamma6> <gamma7> <StroageLevel>")
       System.exit(0)
     }
-  	Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
+  	//Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
     Logger.getLogger("org.eclipse.jetty.server").setLevel(Level.OFF)
 
     val sconf = new SparkConf
@@ -71,9 +71,21 @@ object SVDPlusPlusApp {
     sl=StorageLevel.MEMORY_AND_DISK_SER
   else if(storageLevel=="MEMORY_AND_DISK")
     sl=StorageLevel.MEMORY_AND_DISK
+  else if(storageLevel=="OFF_HEAP")
+    sl=StorageLevel.OFF_HEAP
+  //sl=StorageLevel.OFF_HEAP
+  else if(storageLevel=="NONE")
+    sl=StorageLevel.NONE
     
-   var conf = new SVDPlusPlus.Conf(rank, numIter, minVal, maxVal, gamma1, gamma2, gamma6, gamma7)
-  
+   var conf = new MySVDPlusPlus.Conf(rank, numIter, minVal, maxVal, gamma1, gamma2, gamma6, gamma7)
+
+    /**
+     * cache1: GraphLoader.edgeListFile - edges (hdfs://centos1:9000/SparkBench/SVDPlusPlus/Input)
+     * 8gb，在读取edgeListFile时候cache
+     *
+     *
+     *
+     */
   var edges:  org.apache.spark.rdd.RDD[org.apache.spark.graphx.Edge[Double]]= null
   val dataset="small";
   if(dataset=="small"){
@@ -99,17 +111,20 @@ object SVDPlusPlusApp {
     
   }
     
-    var (newgraph, u) = SVDPlusPlus.run(edges, conf)
+    //var (newgraph, u) = SVDPlusPlus.run(edges, conf)
+
+    var (newgraph, u) = MySVDPlusPlus.run(edges, conf)
+
     newgraph.persist()
     
-	var tri_size=newgraph.triplets.count() //collect().size
+	//var tri_size=newgraph.triplets.count() //collect().size
 	
-    var err = newgraph.vertices.collect().map{ case (vid, vd) =>
+/*    var err = newgraph.vertices.collect().map{ case (vid, vd) =>
         if (vid % 2 == 1) vd._4 else 0.0
     }.reduce(_ + _) / tri_size
     
         
-    println("the err is %.2f".format(err))
+    println("the err is %.2f".format(err))*/
 	
 	//second iteration
 	/*conf.rank=20

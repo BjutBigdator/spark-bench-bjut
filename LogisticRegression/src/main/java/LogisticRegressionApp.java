@@ -30,8 +30,8 @@ import org.apache.spark.storage.StorageLevel;
 public class LogisticRegressionApp {
 
     public static void main(String[] args) {
-        if (args.length < 3) {
-            System.out.println("usage: <input> <output>  <maxIterations> <StorageLevel> ");
+        if (args.length < 4) {
+            System.out.println("usage: <input> <output>  <maxIterations> <StorageLevel> <partitionCount>");
             System.exit(0);
         }
 	Logger.getLogger("org.apache.spark").setLevel(Level.WARN);
@@ -39,7 +39,19 @@ public class LogisticRegressionApp {
         String input = args[0];
         String output = args[1];
         int numIterations = Integer.parseInt(args[2]);
-				String  sl=args[3];
+	    String  storageLevel = args[3];
+        int partitionCount = Integer.parseInt(args[4]);
+
+
+        StorageLevel sl =StorageLevel.MEMORY_ONLY();
+        if(storageLevel=="MEMORY_AND_DISK_SER")
+            sl=StorageLevel.MEMORY_AND_DISK_SER();
+        else if(storageLevel=="MEMORY_AND_DISK")
+            sl=StorageLevel.MEMORY_AND_DISK();
+        else if(storageLevel=="OFF_HEAP")
+            sl=StorageLevel.OFF_HEAP();
+        else if(storageLevel=="NONE")
+            sl=StorageLevel.NONE();
 
         SparkConf conf = new SparkConf().setAppName("LogisticRegressionApp Example");
         JavaSparkContext sc = new JavaSparkContext(conf);
@@ -48,7 +60,7 @@ public class LogisticRegressionApp {
         // Load and parse data
 	long start = System.currentTimeMillis();
 	//	System.out.println("text file input:"+input);
-        JavaRDD<String> data = sc.textFile(input);
+        JavaRDD<String> data = sc.textFile(input, partitionCount);
          //for small data set
         JavaRDD<LabeledPoint> parsedData = data.map(
                 new Function<String, LabeledPoint>() {
@@ -73,11 +85,10 @@ public class LogisticRegressionApp {
         );*/
 
 		RDD<LabeledPoint> parsedRDD_Data=JavaRDD.toRDD(parsedData);
-		if(sl.equals("MEMORY_AND_DISK_SER"))
-        parsedRDD_Data.persist(StorageLevel.MEMORY_AND_DISK_SER());
-			else{
-				parsedRDD_Data.persist(StorageLevel.MEMORY_AND_DISK());
-			}
+		if(storageLevel != "NONE") {
+            parsedRDD_Data.persist(sl);
+        }
+
 	double loadTime = (double)(System.currentTimeMillis() - start) / 1000.0;
 
     // Building the model

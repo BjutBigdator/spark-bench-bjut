@@ -118,6 +118,12 @@ function set_gendata_opt() {
   if [ ! -z "$SPARK_DEFAULT_PARALLELISM" ]; then
     SPARK_OPT="${SPARK_OPT} --conf spark.default.parallelism=${SPARK_DEFAULT_PARALLELISM}"
   fi
+  if [ ! -z "$SPARK_TOTAL_CORES" ]; then
+    SPARK_OPT="${SPARK_OPT} --total-executor-cores ${SPARK_TOTAL_CORES}"
+  fi
+  if [ ! -z "$SPARK_DRIVER_MEMORY" ]; then
+    SPARK_OPT="${SPARK_OPT} --driver-memory ${SPARK_DRIVER_MEMORY}"
+  fi
 
   YARN_OPT=
   if [ "$MASTER" = "yarn" ]; then

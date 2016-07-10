@@ -11,7 +11,7 @@ echo "========== running ${APP} workload =========="
 
 DU ${INPUT_HDFS} SIZE 
 CLASS="LogisticRegression.src.main.java.LogisticRegressionApp"
-OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS}  ${MAX_ITERATION} ${STORAGE_LEVEL} "
+OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS}  ${MAX_ITERATION} ${STORAGE_LEVEL} ${NUM_OF_PARTITIONS}"
 
 JAR="${DIR}/target/LogisticRegressionApp-1.0.jar"
 

@@ -78,4 +78,9 @@ Logger.getLogger("org.eclipse.jetty.server").setLevel(Level.OFF);
     if (args.length > 4) args(4).toInt
     else 1
   }
+
+  def calculatePartitionsNumber(args: Array[String]): Int = {
+    if (args.length > 5) args(5).toInt
+    else -1
+  }
 }

@@ -5,22 +5,22 @@ DIR=`cd $bin/../; pwd`
 . "${DIR}/../bin/config.sh"
 . "${DIR}/bin/config.sh"
 
-echo "========== running ${APP} bench =========="
-
-
 # pre-running
 DU ${INPUT_HDFS} SIZE 
 
+#default Sort
+APP=SimpleSort
 JAR="${DIR}/target/KMeansApp-1.0.jar"
-CLASS="src.main.scala.SimpleKMeans"
-OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${MAX_ITERATION} ${STORAGE_LEVEL} ${NUM_OF_PARTITIONS}"
+CLASS="src.main.scala.SimpleSort"
+OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${MAX_ITERATION} ${STORAGE_LEVEL}"
 
-if  [ $# -ge 1 ] && [ $1 = "graphx" ]; then
-
-	APP=GraphxKMeans
-	CLASS="KmeansApp"
-	OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${MAX_ITERATION} ${NUM_RUN}"
+if  [ $# -ge 1 ] && [ $1 = "WordCount" ]; then
+	APP=SimpleWordCount
+	CLASS="src.main.scala.SimpleWordCount"
+    OPTION=" ${INOUT_SCHEME}${INPUT_HDFS} ${INOUT_SCHEME}${OUTPUT_HDFS} ${NUM_OF_CLUSTERS} ${NUM_OF_PARTITIONS} ${STORAGE_LEVEL}"
 fi
+
+echo "========== running ${APP} bench =========="
 
 setup
 for((i=0;i<${NUM_TRIALS};i++)); do
@@ -40,4 +40,3 @@ teardown
 
 exit 0
 
-r
