@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="false">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="Common" />
+        <module name="ConnectedComponentApp" />
+        <module name="DecisionTreeApp" />
+        <module name="KMeansApp" />
+        <module name="LabelPropagationApp" />
+        <module name="LinearRegressionApp" />
+        <module name="LogisticRegressionApp" />
+        <module name="MFApp" />
+        <module name="PageRankApp" />
+        <module name="PCAApp" />
+        <module name="PregelOperationApp" />
+        <module name="ShortestPathsApp" />
+        <module name="sparkbench-data-gen-project" />
+        <module name="SQLApp" />
+        <module name="StreamingApp" />
+        <module name="StronglyConnectedComponentApp" />
+        <module name="SVDPlusPlusApp" />
+        <module name="SVMApp" />
+        <module name="TerasortApp" />
+        <module name="TriangleCountApp" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Common" target="1.6" />
+      <module name="ConnectedComponentApp" target="1.6" />
+      <module name="DecisionTreeApp" target="1.6" />
+      <module name="KMeansApp" target="1.6" />
+      <module name="LabelPropagationApp" target="1.6" />
+      <module name="LinearRegressionApp" target="1.6" />
+      <module name="LogisticRegressionApp" target="1.6" />
+      <module name="MFApp" target="1.6" />
+      <module name="PageRankApp" target="1.6" />
+      <module name="PCAApp" target="1.6" />
+      <module name="PregelOperationApp" target="1.6" />
+      <module name="ShortestPathsApp" target="1.6" />
+      <module name="sparkbench" target="1.6" />
+      <module name="SQLApp" target="1.6" />
+      <module name="StreamingApp" target="1.6" />
+      <module name="StronglyConnectedComponentApp" target="1.6" />
+      <module name="SVDPlusPlusApp" target="1.6" />
+      <module name="SVMApp" target="1.6" />
+      <module name="TerasortApp" target="1.6" />
+      <module name="TriangleCountApp" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
+

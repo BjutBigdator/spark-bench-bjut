@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/common/Common.iml" filepath="$PROJECT_DIR$/common/Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConnectedComponent/ConnectedComponentApp.iml" filepath="$PROJECT_DIR$/ConnectedComponent/ConnectedComponentApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DecisionTree/DecisionTreeApp.iml" filepath="$PROJECT_DIR$/DecisionTree/DecisionTreeApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KMeans/KMeansApp.iml" filepath="$PROJECT_DIR$/KMeans/KMeansApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabelPropagation/LabelPropagationApp.iml" filepath="$PROJECT_DIR$/LabelPropagation/LabelPropagationApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LinearRegression/LinearRegressionApp.iml" filepath="$PROJECT_DIR$/LinearRegression/LinearRegressionApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LogisticRegression/LogisticRegressionApp.iml" filepath="$PROJECT_DIR$/LogisticRegression/LogisticRegressionApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MatrixFactorization/MFApp.iml" filepath="$PROJECT_DIR$/MatrixFactorization/MFApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PCA/PCAApp.iml" filepath="$PROJECT_DIR$/PCA/PCAApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PageRank/PageRankApp.iml" filepath="$PROJECT_DIR$/PageRank/PageRankApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PregelOperation/PregelOperationApp.iml" filepath="$PROJECT_DIR$/PregelOperation/PregelOperationApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SQL/SQLApp.iml" filepath="$PROJECT_DIR$/SQL/SQLApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SVDPlusPlus/SVDPlusPlusApp.iml" filepath="$PROJECT_DIR$/SVDPlusPlus/SVDPlusPlusApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SVM/SVMApp.iml" filepath="$PROJECT_DIR$/SVM/SVMApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShortestPaths/ShortestPathsApp.iml" filepath="$PROJECT_DIR$/ShortestPaths/ShortestPathsApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Streaming/StreamingApp.iml" filepath="$PROJECT_DIR$/Streaming/StreamingApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StronglyConnectedComponent/StronglyConnectedComponentApp.iml" filepath="$PROJECT_DIR$/StronglyConnectedComponent/StronglyConnectedComponentApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Terasort/TerasortApp.iml" filepath="$PROJECT_DIR$/Terasort/TerasortApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TriangleCount/TriangleCountApp.iml" filepath="$PROJECT_DIR$/TriangleCount/TriangleCountApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sparkbench.iml" filepath="$PROJECT_DIR$/sparkbench.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/DataGen/sparkbench-data-gen-project.iml" filepath="$PROJECT_DIR$/common/DataGen/sparkbench-data-gen-project.iml" />
+    </modules>
+  </component>
+</project>
+
